@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(lme4)
+library(lmerTest)
+```
+
+
+```{r}
+data=read.csv('../tables/participant simulation corrparam10.csv')
+
+data$item = factor(data$item)
+data$condition = factor(data$condition)
+
+m = glmer(accuracy ~ condition*block + (1|item), data=data, family=binomial)
+summary(m)
+```
+
+```{r}
+data=read.csv('../tables/participant simulation corrparam1.csv')
+
+data$item = factor(data$item)
+data$condition = factor(data$condition)
+
+m = glmer(accuracy ~ condition*block + (1|item), data=data, family=binomial)
+summary(m)
+```
